@@ -1,0 +1,44 @@
+{
+  "name": "@cloud99p/canton-rwa",
+  "version": "1.0.0",
+  "description": "Canton Network RWA Tokenization Platform - Real World Asset tokenization and trading",
+  "author": "Emmanuel Nenpan Hosea <emmanuelhosea09@gmail.com>",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "@omnilearn/sdk": "^1.0.0",
+    "express": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/express": "^4.17.0",
+    "@types/cors": "^2.8.0",
+    "typescript": "~5.9.2",
+    "tsx": "^4.21.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cloud99p/canton-rwa.git"
+  },
+  "keywords": [
+    "canton",
+    "rwa",
+    "tokenization",
+    "blockchain",
+    "treasury-bond",
+    "defi"
+  ]
+}
