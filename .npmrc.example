@@ -1,0 +1,13 @@
+# OmniLearn SDK - GitHub Packages Registry
+# Copy this file to .npmrc and replace YOUR_GITHUB_TOKEN with your actual token
+
+@cloud99p:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+
+# To get your GitHub token:
+# 1. Go to https://github.com/settings/tokens
+# 2. Create new token with 'read:packages' scope
+# 3. Replace ${GITHUB_TOKEN} with your token
+#
+# Or set environment variable:
+# export GITHUB_TOKEN=ghp_your_token_here
