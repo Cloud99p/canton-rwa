@@ -2,6 +2,7 @@
  * Knowledge Recording Utilities for Canton RWA
  * 
  * Helper functions to record Canton events to OmniLearn
+ * Uses official @cloud99p/omnilearn-sdk
  */
 
 import { omnilearnClient } from './client';
@@ -46,7 +47,7 @@ export async function recordTradeExecution(data: {
   userId?: string;
 }) {
   try {
-    await omnilearnClient.recordAndWait({
+    const response = await omnilearnClient.recordAndWait({
       type: 'trade_executed',
       data,
       metadata: {
@@ -55,6 +56,8 @@ export async function recordTradeExecution(data: {
       },
     });
     console.log(`✅ Recorded trade execution: ${data.tradeId}`);
+    console.log(`   Node ID: ${response.nodeId}`);
+    console.log(`   Proof Hash: ${response.proofHash}`);
   } catch (error) {
     console.error('❌ Failed to record trade execution:', error);
   }
@@ -82,5 +85,29 @@ export async function recordTreasuryOperation(data: {
     console.log(`✅ Recorded treasury operation: ${data.operationId}`);
   } catch (error) {
     console.error('❌ Failed to record treasury operation:', error);
+  }
+}
+
+/**
+ * Search for insights across Canton and other services
+ */
+export async function searchInsights(query: string, options?: {
+  sources?: string[];
+  types?: string[];
+  limit?: number;
+}) {
+  try {
+    const results = await omnilearnClient.search({
+      query,
+      sources: options?.sources || ['canton-rwa'],
+      types: options?.types || ['asset_issued', 'trade_executed', 'treasury_operation'],
+      limit: options?.limit || 20,
+    });
+
+    console.log(`🔍 Found ${results.total} insights for: "${query}"`);
+    return results;
+  } catch (error) {
+    console.error('❌ Failed to search insights:', error);
+    return null;
   }
 }

@@ -166,16 +166,38 @@ canton-rwa/
 
 ## 🧪 Testing
 
+Comprehensive test suite with 30+ tests covering unit and integration tests.
+
 ```bash
+# Install dependencies (include dev dependencies)
+NODE_ENV=development npm install
+
 # Run all tests
-pnpm test
+npm test
 
-# Watch mode
-pnpm test:watch
+# Watch mode (auto-rerun on changes)
+npm run test:watch
 
-# Run specific test file
-pnpm test src/assets/issue.test.ts
+# Run with coverage report
+npm run test:coverage
+
+# Run unit tests only
+npm run test:unit
+
+# Run integration tests only
+npm run test:integration
+
+# Open interactive test UI
+npm run test:ui
 ```
+
+📖 See [TESTING.md](TESTING.md) for complete testing guide including:
+- Test structure and organization
+- Writing new tests
+- Mocking external dependencies
+- Coverage reports
+- CI/CD integration
+- Troubleshooting
 
 ---
 
